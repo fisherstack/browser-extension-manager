@@ -1,0 +1,126 @@
+:root {
+  /* Colors */
+  --dark: hsl(227, 75%, 14%);
+  --pale-blue: hsl(217, 61%, 90%);
+  --light-gray: hsl(0, 0%, 78%);
+  --gray: hsl(226, 11%, 37%);
+  --red: hsl(3, 77%, 44%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-block-size: 100dvb;
+  margin-block: 0;
+
+  background-color: var(--pale-blue);
+  /* padding-inline: clamp(1rem, 5vw, 3rem); */
+  font-family: "noto-sans", Arial, Helvetica, sans-serif;
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  /* width: 100%; */
+  /* height: 100%; */
+}
+
+main {
+  margin-inline: clamp(1rem, 5vw, 3rem);
+}
+
+h1 {
+  color: var(--dark);
+}
+
+.extensions {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+  gap: 1rem;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid var(--light-gray);
+  border-radius: 20px;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  color: var(--gray);
+  gap: 1rem;
+
+  .logo {
+    /* width: 25%; */
+    flex-shrink: 1;
+  }
+
+  h2 {
+    color: var(--dark);
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-block-end: 1rem;
+  }
+
+  .content {
+    flex-grow: 1;
+    width: min-content;
+  }
+
+  .action {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .toggle {
+      display: flex;
+      width: 40px;
+      height: 20px;
+      background-color: var(--light-gray);
+      border-radius: 20px;
+      cursor: pointer;
+
+      &::before {
+        display: block;
+        content: "";
+        width: 16px;
+        height: 16px;
+        aspect-ratio: 1/1;
+        background-color: white;
+        margin-block: auto;
+        margin-inline-start: 2px;
+        margin-inline-end: auto;
+        border-radius: 50%;
+      }
+
+      &[data-toggle-on] {
+        background: var(--red);
+
+        &::before {
+          margin-inline-end: 0.1rem;
+          margin-inline-start: auto;
+        }
+      }
+    }
+  }
+
+  button {
+    border: 1px solid var(--light-gray);
+    border-radius: 2rem;
+    padding: 0.5rem;
+    /* margin-block-start: 1rem; */
+    font-weight: 500;
+  }
+}
