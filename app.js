@@ -6,7 +6,7 @@ const activeFilter = document.querySelector(".filter button[data-active]");
 const inactiveFilter = document.querySelector(".filter button[data-inactive]");
 const allFilter = document.querySelector(".filter button[data-all]");
 const mode = document.querySelector(".mode-switch > img");
-const defaultMode = "light";
+let defaultMode = "light";
 
 let currentFilter = allFilter;
 
@@ -65,13 +65,13 @@ removeBtns.forEach((btn) => {
 
 /* Dark Mode */
 mode.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-
-  if (defaultMode === "light") {
-    mode.setAttribute("src", "assets/images/icon-sun.svg");
-    defaultMode = "dark";
-  } else {
-    mode.setAttribute("src", "assets/images/icon-moon.svg");
-    defaultMode = "light";
-  }
+  
+    document.body.classList.toggle("dark");
+    if (defaultMode === "light") {
+        mode.setAttribute("src", "assets/images/icon-sun.svg");
+        defaultMode = "dark";
+    } else {
+        mode.setAttribute("src", "assets/images/icon-moon.svg");
+        defaultMode = "light";
+    }
 });
