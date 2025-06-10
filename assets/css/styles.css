@@ -6,6 +6,7 @@
   --gray: hsl(226, 11%, 37%);
   --red: hsl(3, 77%, 44%);
   --soft-red: hsl(3, 86%, 64%);
+  --light: white;
 }
 
 *,
@@ -15,6 +16,9 @@
 }
 
 body {
+ /* la méthode la plus moderne pour avoir un 
+ body height de la hauteur du viewport, que le smartphone ait ou non 
+ les barres de scroll et autres élément UI propriétaires)*/ 
   min-block-size: 100dvb;
   margin-block: 0;
 
@@ -23,12 +27,36 @@ body {
   font-family: "noto-sans", Arial, Helvetica, sans-serif;
 }
 
+
 button {
   border: none;
   margin: 0;
   padding: 0;
-  background: none;
+  background-color: none;
   cursor: pointer;
+  /* ----- */
+
+  background-color: var(--light);
+  color: var(--dark);
+  border: 1px solid var(--light-gray);
+  border-radius: 2rem;
+  padding: 0.5rem;
+  padding-inline: 1rem;
+    padding-block: 0.5rem;
+  /* margin-block-start: 1rem; */
+  font-weight: 500;
+
+  &:hover {
+    background-color: var(--soft-red);
+    color: var(--light);
+    border-color: transparent;
+  }
+
+  &[data-filter-on] {
+    background-color: var(--red);
+    color: var(--light);
+    border-color: transparent;
+  }
 }
 
 img {
@@ -37,8 +65,43 @@ img {
   /* height: 100%; */
 }
 
-main {
+.wrapper {
   margin-inline: clamp(1rem, 5vw, 3rem);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--light);
+
+  border: 1px solid var(--light-gray);
+  border-radius: 20px;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+  margin-block-start: 1rem;
+  margin-block-end: 2rem;
+
+  -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+
+  .logo img {
+    height: 2rem;
+  }
+
+  .mode-switch {
+    background-color: var(--light-gray);
+    padding: 8px;
+    border-radius: 5px;
+
+    & img {
+      height: calc(2rem - 16px);
+    }
+  }
+}
+
+main {
+  
 }
 
 .titlebar {
@@ -59,14 +122,10 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  font-size: 1.2rem;
 
-  & > * {
-    border: 1px solid var(--light-gray);
+  & button {
+    font-size: 1.2rem;
     border-radius: 20rem;
-    padding-inline: 1rem;
-    padding-block: 0.5rem;
-    background-color: white;
   }
 }
 
@@ -77,7 +136,7 @@ h1 {
 }
 
 .card {
-  background-color: white;
+  background-color: var(--light);
   border: 1px solid var(--light-gray);
   border-radius: 20px;
   padding-inline: 1rem;
@@ -87,7 +146,7 @@ h1 {
   color: var(--gray);
   gap: 1rem;
   -webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
-box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
 
   .logo {
     /* width: 25%; */
@@ -126,7 +185,7 @@ box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
         width: 16px;
         height: 16px;
         aspect-ratio: 1/1;
-        background-color: white;
+        background-color: var(--light);
         margin-block: auto;
         margin-inline-start: 2px;
         margin-inline-end: auto;
@@ -143,18 +202,15 @@ box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
       }
     }
   }
+}
 
-  button {
-    border: 1px solid var(--light-gray);
-    border-radius: 2rem;
-    padding: 0.5rem;
-    /* margin-block-start: 1rem; */
-    font-weight: 500;
 
-    &:hover {
-      background-color: var(--soft-red);
-      color: white;
-      border: none;
-    }
-  }
+/* Dark Mode */
+body.dark {
+  /* peu importe les couleurs, le principe est qu'elles changent */
+  --dark: hsl(217, 61%, 90%);
+  --pale-blue: hsl(227, 75%, 14%);
+  --light-gray: hsl(226, 11%, 37%);
+  --gray: hsl(0, 0%, 78%);
+  --light: black;
 }
